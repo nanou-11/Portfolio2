@@ -4,13 +4,28 @@
   flex-basis: 65%;
   margin: 1rem;
 }
-.couv{
+.couv {
   background: url("./images/couv.jpg");
   width: 30vw;
   height: 80vh;
   margin-top: 10vh;
   margin-left: 35vw;
   border-radius: 0 20px 20px 0;
+}
+.leftPage1 {
+  background: url("./images/paper.png"),
+    linear-gradient(
+      270deg,
+      rgba(157, 158, 137, 1) 0%,
+      rgba(233, 226, 187, 1) 5%,
+      rgba(255, 251, 203, 1) 18%
+    );
+  border-radius: 24px 20% 20% 24px/8px 15px 15px 8px;
+  width: 30vw;
+  height: 80vh;
+  margin-top: 10vh;
+  margin-left: 20vw;
+  box-shadow: -1px 2px 10px 5px rgba(0, 0, 0, 0.3) inset;
 }
 .leftPage {
   background: url("./images/paper.png"),
@@ -24,7 +39,7 @@
   width: 30vw;
   height: 80vh;
   margin-top: 10vh;
-  margin-left: 20vw;
+  margin-left: 5vw;
   box-shadow: -1px 2px 10px 5px rgba(0, 0, 0, 0.3) inset;
 }
 .rightPage {
@@ -45,20 +60,21 @@
   font-size: 6rem;
   padding-top: 30vh;
   font-weight: bold;
-  color : rgb(185, 169, 169)
+  color: rgb(185, 169, 169);
 }
 .h2 {
-  margin : 2vw;
-  font-size : 2.5rem
+  margin: 2vw;
+  font-size: 2.5rem;
+  height: 12vh;
 }
 .screenshot1 {
   width: 25vw;
-  height : 28vh;
-  margin-top : 6vh;
+  height: 28vh;
+  margin-top: 6vh;
 }
 .screenshot {
   width: 25vw;
-  margin-top : 2vw
+  margin-top: 2vw;
 }
 .button {
   font-size: 2rem !important;
@@ -75,6 +91,21 @@
 .left {
   text-align: left;
   padding-left: 2vw;
-  padding-top : 0.5vw
+  padding-top: 0.5vw;
 }
 
+.arrowleft {
+  width: 5vw;
+  margin-left: 10vw;
+  cursor: pointer;
+}
+.arrowright {
+  width: 5vw;
+  margin-left: 5vw;
+  cursor: pointer;
+}
+.continued {
+  margin-top: 20vh;
+  font-weight: bold;
+  font-size: 4rem;
+}
