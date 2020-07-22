@@ -1,0 +1,8 @@
+.navbar {
+  background-color: rgba(255, 255, 255, 0.5);
+}
+.navItem {
+  color: black !important;
+  font-size : 3rem;
+  margin-left : 5vw
+}
