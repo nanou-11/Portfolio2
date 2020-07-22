@@ -1,0 +1,16 @@
+.buttonSubmit {
+    margin-top: 2vw;
+    background-color: red !important;
+    font-size: 1.4rem !important;
+    font-weight: bold !important;
+    padding: 0.2vw 1vw !important;
+  }
+  .button {
+    background-color: rgba(0, 0, 0, 0.8) !important;
+    font-weight: bold !important;
+    padding: 0.2vw 1vw !important;
+  }
+  
+.input {
+  margin: 1vw 0.2vw;
+}

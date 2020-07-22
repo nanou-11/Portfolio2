@@ -5,14 +5,15 @@ import { Button, Input, Form, Row, Col } from "reactstrap";
 import Axios from "axios";
 
 const host = process.env.REACT_APP_HOST;
-const imgurToken = process.env.REACT_APP_IMGUR_TOKEN;
+// const imgurToken = process.env.REACT_APP_IMGUR_TOKEN;
 
 function Infos() {
   const [abouts, setAbouts] = useState("");
-  const [about, setAbout] = useState(abouts[0] && abouts[0].cv);
+  const [about, setAbout] = useState("");
   const [errorPutAbout, setErrorPutAbout] = useState(false);
   const [error, setError] = useState(false);
   const [cv, setCV] = useState(abouts[0] && abouts[0].cv);
+  const [errorPutCV, setErrorPutCV] = useState(false);
 
   const handleCV = (e) => {
     setCV(e.target.files[0]);
@@ -23,14 +24,18 @@ function Infos() {
     try {
       const res = await Axios.get(`${host}/about`);
       setAbouts(res.data);
+      setAbout(res.data[0] && res.data[0].about);
+      setCV(res.data[0] && res.data[0].cv);
+
     } catch (err) {
-      setErrorPutAbout(true);
+      setError(true);
     }
   };
 
   const putAbout = async () => {
+    const {id} = abouts[0]
     try {
-      await Axios.put(`${host}/api/v1/activityFields/${abouts[0].id}`, {
+      await Axios.put(`${host}/about/${id}`, {
         about,
       });
     } catch (err) {
@@ -47,14 +52,14 @@ function Infos() {
     })
       .then((res) => {
         const { id } = abouts[0];
-        console.log(id)
+        console.log(id);
         return Axios.put(`${host}/about/${id}`, {
           cv: res.data.data.link,
         });
       })
-      .then(()=> getAbout())
+      .then(() => getAbout())
       .catch((err) => {
-        setError(err);
+        setErrorPutCV(err);
       });
   };
 
@@ -64,12 +69,13 @@ function Infos() {
 
   return (
     <div>
+      {error ? <h3>erreur lors de la récupération des données</h3> : ""}
       <h1 className={styles.h1}>A propos</h1>
       <Input
         className={styles.textarea}
         type="textarea"
         onChange={(e) => setAbout(e.target.value)}
-        value={abouts[0] && abouts[0].about}
+        value={about}
       />
       <Row className=" mt-3">
         <Col xs={{ size: 2, offset: 9 }}>
@@ -78,9 +84,12 @@ function Infos() {
           </Button>
         </Col>
       </Row>
+      {errorPutAbout ? <h3>Erreur lors de la modification</h3> : ""}
       <h1 className={styles.h1}>CV</h1>
       <Form onSubmit={postNewCV}>
-        <p className={styles.p}><b>CV actuel :</b> {abouts[0] && abouts[0].cv}</p>
+        <p className={styles.p}>
+          <b>CV actuel :</b> {abouts[0] && abouts[0].cv}
+        </p>
         <Row className={styles.cv}>
           <Col xs="8">
             <Input
@@ -97,6 +106,7 @@ function Infos() {
             </Button>
           </Col>
         </Row>
+        {errorPutCV ? <h3>Erreur lors de la modification du CV</h3> : ""}
       </Form>
     </div>
   );

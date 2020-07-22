@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
 
 import styles from "./About.module.css";
 
+const host = process.env.REACT_APP_HOST;
+
 function About() {
+  const [about, setAbout] = useState([]);
+  const [error, setError] = useState('');
+
+  const getAbout = async () => {
+    try {
+      const res = await Axios.get(`${host}/about`);
+      setAbout(res.data);
+    } catch (err) {
+      setError(true);
+    }
+  };
+  useEffect(() => {
+    getAbout();
+  }, []);
   return (
     <div className={styles.pages}>
       <div className={styles.leftPage}>
@@ -10,12 +27,7 @@ function About() {
       </div>
       <div className={styles.rightPage}>
         <p className={styles.aboutText}>
-          After 10 years in mass distribution, first as an employee and then as
-          a team manager, I took on a challenge: to change my life and do
-          something that I like and that thrives me on. I learned to code at
-          Wild Code School Biarritz. Almost all of my training took place in
-          remote, so I am totally comfortable with this mode of work. More
-          motivated than ever, I'm ready to leave my own mark in the web world.
+          {about[0] && about[0].about}
         </p>
       </div>
     </div>
