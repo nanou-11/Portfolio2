@@ -1,8 +1,8 @@
 .pages {
     display: flex;
-    width: auto;
     flex-basis: 65%;
-    margin: 1rem;
+    margin-right :0 !important;
+    margin-left :0 !important;
   }
   .leftPage {
     background: url("../images/paper.png"),

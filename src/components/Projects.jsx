@@ -53,7 +53,7 @@ function Projects() {
   return (
     <>
       <NavBar />
-      <Row>
+      <Row className="ml-0 mr-0">
         {change === "un" ? (
           <div className={styles.pages}>
             <img

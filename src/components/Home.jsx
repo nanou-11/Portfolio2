@@ -23,7 +23,7 @@ function Home() {
   return (
     <>
       <NavBar />
-      <Row>
+      <Row className="ml-0 mr-0">
         {change === true ? (
           <div className={styles.couv}>
             <h1 className={styles.h1}>Welcome to my portfolio !</h1>
