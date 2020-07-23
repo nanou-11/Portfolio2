@@ -1,5 +1,13 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## VARIABLE ENVIRONMENT FOR DATABASE
+
+_please create a ".env" with those fields for using the database_
+
+- REACT_APP_HOST = host of development web server(ex: http://localhost:8080)
+- REACT_APP_IMGUR_TOKEN=Client_id imgur
+
+
 ## Available Scripts
 
 In the project directory, you can run:
