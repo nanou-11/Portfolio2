@@ -27,6 +27,7 @@ function AddWorks({ getProjects }) {
   const [screenshot3, setScreenshot3] = useState("");
   const [date, setDate] = useState("");
   const [tools, setTools] = useState("");
+  const [user, setUser] = useState();
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [loading3, setLoading3] = useState(false);
@@ -44,6 +45,19 @@ function AddWorks({ getProjects }) {
     setScreenshot3(e.target.files[0]);
   };
 
+  const getUser = async () => {
+    try {
+      const res = await Axios.get(`${host}/user`);
+      setUser(res.data[0]);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   const postProject = async () => {
     try {
       await Axios.post(`${host}/works`, {
@@ -55,6 +69,7 @@ function AddWorks({ getProjects }) {
         screenshot2,
         screenshot3,
         date,
+        UserId: user.id,
       });
       setModal(false);
       getProjects();
@@ -119,7 +134,7 @@ function AddWorks({ getProjects }) {
         Ajouter un projet
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalBody>
+        <ModalBody className={styles.body}>
           <Form onSubmit={handleSubmit}>
             <Input
               className={styles.input}
@@ -238,7 +253,7 @@ function AddWorks({ getProjects }) {
               </Col>
             </Row>
             <Row>
-              <Col xs={{ size: 2, offset: 4 }}>
+              <Col xs={{ size: 2, offset: 9 }}>
                 <Button className={styles.buttonSubmit} type="submit">
                   Ajouter
                 </Button>

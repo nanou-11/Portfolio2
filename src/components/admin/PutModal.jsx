@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useReducer, useEffect } from "react";
 import {
   Button,
   Modal,
@@ -40,9 +40,23 @@ function PutModal({
   const [date, setDate] = useState(datee);
   const [tools, setTools] = useState(toolss);
   const [error, setError] = useState(false);
+  const [user, setUser] = useState();
   const [loading1, setLoading1] = useState(false);
   const [loading2, setLoading2] = useState(false);
   const [loading3, setLoading3] = useState(false);
+
+  const getUser = async () => {
+    try {
+      const res = await Axios.get(`${host}/user`);
+      setUser(res.data[0]);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleOne = (e) => {
     setScreenshot1(e.target.files[0]);
@@ -107,6 +121,7 @@ function PutModal({
         screenshot2,
         screenshot3,
         date,
+        UserId: user.id,
       });
       setModal(!modal);
       getProjects();
@@ -130,7 +145,7 @@ function PutModal({
     }
   };
   return (
-    <div className={styles.body}>
+    <div>
       <Button className={styles.button} onClick={toggle}>
         Modifier
       </Button>
@@ -138,7 +153,7 @@ function PutModal({
         <ModalHeader toggle={toggle}>
           <h1 className={styles.header}>{label}</h1>
         </ModalHeader>
-        <ModalBody>
+        <ModalBody className={styles.body}>
           <Form onSubmit={handleSubmit}>
             <Input
               className={styles.input}

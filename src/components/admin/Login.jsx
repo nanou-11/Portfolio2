@@ -27,7 +27,7 @@ function Login() {
   };
 
   return (
-    <Row>
+    <Row className="ml-0 mr-0">
       <div className={styles.couv}>
         <h1 className={styles.titleLogin}>Login</h1>
         <Form onSubmit={handleSubmit} className={styles.form}>

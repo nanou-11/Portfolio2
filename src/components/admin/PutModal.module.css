@@ -1,7 +1,6 @@
 .buttonSubmit {
   margin-top: 2vw;
-  background-color: rgb(185, 169, 169) !important;
-  color: black !important;
+  background-color: rgba(0, 0, 0, 0.8) !important;
   font-size: 1.4rem !important;
   font-weight: bold !important;
   padding: 0.2vw 1vw !important;
@@ -31,4 +30,7 @@
 }
 .spinner {
   margin-left : 2vw;
+}
+.body {
+  margin : 1vw
 }
