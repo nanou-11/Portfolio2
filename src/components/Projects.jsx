@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./Projects.module.css";
 import Axios from "axios";
-import { Col, Row, Button, Tooltip } from "reactstrap";
-import Iframe from "react-iframe";
+import { Row, Tooltip } from "reactstrap";
 import NavBar from "./NavBar";
 import { useHistory } from "react-router";
 
@@ -53,6 +52,7 @@ function Projects() {
   return (
     <>
       <NavBar />
+      {error ? "" : ""}
       <Row className="ml-0 mr-0">
         {change === "un" ? (
           <div className={styles.pages}>

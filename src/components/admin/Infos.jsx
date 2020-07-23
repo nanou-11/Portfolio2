@@ -14,6 +14,21 @@ function Infos() {
   const [error, setError] = useState(false);
   const [cv, setCV] = useState(abouts[0] && abouts[0].cv);
   const [errorPutCV, setErrorPutCV] = useState(false);
+  const [user, setUser] = useState();
+  const [modified, setModified] = useState(false);
+
+  const getUser = async () => {
+    try {
+      const res = await Axios.get(`${host}/user`);
+      setUser(res.data[0]);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
 
   const handleCV = (e) => {
     setCV(e.target.files[0]);
@@ -26,20 +41,23 @@ function Infos() {
       setAbouts(res.data);
       setAbout(res.data[0] && res.data[0].about);
       setCV(res.data[0] && res.data[0].cv);
-
     } catch (err) {
       setError(true);
     }
   };
 
   const putAbout = async () => {
-    const {id} = abouts[0]
+    const { id } = abouts[0];
     try {
       await Axios.put(`${host}/about/${id}`, {
         about,
+        UserId: user.id,
       });
+      setModified(true);
+      setTimeout(()=> setModified(false), 1000)
     } catch (err) {
       setErrorPutAbout(true);
+      setTimeout(()=> setErrorPutAbout(false), 1500)
     }
   };
 
@@ -84,6 +102,7 @@ function Infos() {
           </Button>
         </Col>
       </Row>
+      {modified ? <h2>Modification réussie</h2> : ""}
       {errorPutAbout ? <h3>Erreur lors de la modification</h3> : ""}
       <h1 className={styles.h1}>CV</h1>
       <Form onSubmit={postNewCV}>

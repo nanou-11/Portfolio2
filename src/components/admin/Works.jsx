@@ -28,6 +28,7 @@ function Works() {
 
   return (
     <div>
+      {error ? "" : ""}
       <h1 className={styles.h1}>Projets</h1>
       {projects.map((item) => (
         <Row>

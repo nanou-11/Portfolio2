@@ -13,12 +13,12 @@ function About() {
   const history = useHistory();
 
   const handleHome = () => {
-    history.push('/')
-  }
+    history.push("/");
+  };
 
   const handleProjects = () => {
-    history.push('/projects')
-  }
+    history.push("/projects");
+  };
 
   const getAbout = async () => {
     try {
@@ -33,6 +33,7 @@ function About() {
   }, []);
   return (
     <>
+      {error ? "" : ""}
       <NavBar />
       <div className={styles.pages}>
         <img

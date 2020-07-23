@@ -1,4 +1,4 @@
-import React, { useState, useReducer, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Button,
   Modal,
@@ -146,6 +146,7 @@ function PutModal({
   };
   return (
     <div>
+      {error ? "" : ""}
       <Button className={styles.button} onClick={toggle}>
         Modifier
       </Button>

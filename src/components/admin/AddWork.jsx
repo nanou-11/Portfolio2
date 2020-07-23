@@ -130,6 +130,7 @@ function AddWorks({ getProjects }) {
 
   return (
     <div>
+       {error ? "" : ""}
       <Button className={styles.buttonModal} onClick={toggle}>
         Ajouter un projet
       </Button>
@@ -260,6 +261,7 @@ function AddWorks({ getProjects }) {
               </Col>
             </Row>
           </Form>
+          {errorPost ? <h2>Erreur lors de l'ajout</h2> : ""}
         </ModalBody>
       </Modal>
     </div>
