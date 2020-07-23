@@ -11,6 +11,7 @@ import {
   Modal,
   ModalBody,
   Label,
+  Spinner,
 } from "reactstrap";
 
 const host = process.env.REACT_APP_HOST;
@@ -26,6 +27,9 @@ function AddWorks({ getProjects }) {
   const [screenshot3, setScreenshot3] = useState("");
   const [date, setDate] = useState("");
   const [tools, setTools] = useState("");
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
   const [modal, setModal] = useState(false);
 
   const toggle = () => setModal(!modal);
@@ -53,7 +57,7 @@ function AddWorks({ getProjects }) {
         date,
       });
       setModal(false);
-      getProjects()
+      getProjects();
     } catch (err) {
       setErrorPost(true);
     }
@@ -61,36 +65,44 @@ function AddWorks({ getProjects }) {
 
   const postOne = (e) => {
     e.preventDefault();
+    setLoading1(true);
     Axios.post("https://api.imgur.com/3/image", screenshot1, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot1(res.data.data.link))
+      .then(() => setLoading1(false))
       .catch((err) => {
         setError(err);
       });
   };
   const postTwo = (e) => {
     e.preventDefault();
+    setLoading2(true);
+
     Axios.post("https://api.imgur.com/3/image", screenshot2, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot2(res.data.data.link))
+      .then(() => setLoading2(false))
       .catch((err) => {
         setError(err);
       });
   };
   const postThree = (e) => {
     e.preventDefault();
+    setLoading3(true);
     Axios.post("https://api.imgur.com/3/image", screenshot3, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot3(res.data.data.link))
+      .then(() => setLoading3(false))
+
       .catch((err) => {
         setError(err);
       });
@@ -150,6 +162,7 @@ function AddWorks({ getProjects }) {
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file"
                   id="exampleFile1"
@@ -162,14 +175,21 @@ function AddWorks({ getProjects }) {
                   Télécharger
                 </Button>
               </Col>
+              <Col>
+                {loading1 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}
+              </Col>
             </Row>
-
             <Label className={styles.input} for="exampleFile2">
               <u>2nd screenshot</u>
             </Label>
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file2"
                   id="exampleFile2"
@@ -182,14 +202,21 @@ function AddWorks({ getProjects }) {
                   Télécharger
                 </Button>
               </Col>
+              <Col>
+                {loading2 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}
+              </Col>
             </Row>
-
             <Label className={styles.input} for="exampleFile3">
               <u>3eme screenshot</u>
             </Label>
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file3"
                   id="exampleFile3"
@@ -201,6 +228,13 @@ function AddWorks({ getProjects }) {
                 <Button className={styles.button} onClick={postThree}>
                   Télécharger
                 </Button>
+              </Col>
+              <Col>
+                {loading3 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}
               </Col>
             </Row>
             <Row>

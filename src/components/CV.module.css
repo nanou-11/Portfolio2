@@ -1,0 +1,11 @@
+.cv {
+  width: 32vw;
+  border-radius: 20px;
+}
+.navItem {
+  color: black !important;
+  font-size: 3rem;
+  margin-left: 40vw;
+  padding-top: 0.5vw;
+  cursor: pointer;
+}

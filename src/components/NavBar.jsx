@@ -1,14 +1,11 @@
-import React, { useState } from "react";
+import React from "react";
 import { Navbar, Nav, NavItem, NavLink } from "reactstrap";
 
 import styles from "./NavBar.module.css";
 import { Link } from "react-router-dom";
+import CV from "./CV";
 
 function NavBar() {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggle = () => setIsOpen(!isOpen);
-
   return (
     <div>
       <Navbar expand="md" className={styles.navbar}>
@@ -43,6 +40,7 @@ function NavBar() {
               Contact
             </NavLink>
           </NavItem>
+          <CV />
         </Nav>
       </Navbar>
     </div>

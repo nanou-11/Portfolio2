@@ -5,6 +5,7 @@ import Axios from "axios";
 import { Col, Row, Button, Tooltip } from "reactstrap";
 import Iframe from "react-iframe";
 import NavBar from "./NavBar";
+import { useHistory } from "react-router";
 
 const host = process.env.REACT_APP_HOST;
 
@@ -12,6 +13,7 @@ function Projects() {
   const [projects, setProjects] = useState([]);
   const [error, setError] = useState(false);
   const [change, setChange] = useState("un");
+  const history = useHistory();
   const [tooltipOpen, setTooltipOpen] = useState(false);
   const toggle = () => setTooltipOpen(!tooltipOpen);
 
@@ -27,6 +29,13 @@ function Projects() {
   const [tooltipOpen5, setTooltipOpen5] = useState(false);
   const toggle5 = () => setTooltipOpen5(!tooltipOpen5);
 
+  const handleContact = () => {
+    history.push("/contact");
+  };
+
+  const handleAbout = () => {
+    history.push("/about");
+  };
   const getProjects = async () => {
     try {
       const res = await Axios.get(`${host}/works`);
@@ -47,7 +56,13 @@ function Projects() {
       <Row>
         {change === "un" ? (
           <div className={styles.pages}>
-            <div className={styles.leftPage1}>
+            <img
+              onClick={handleAbout}
+              className={styles.arrowleft}
+              src="https://image.flaticon.com/icons/svg/860/860790.svg"
+              alt="arrowright"
+            />
+            <div className={styles.leftPage}>
               <h1 className={styles.h1}>My projects</h1>
             </div>
             <div className={styles.rightPage}>
@@ -224,6 +239,12 @@ function Projects() {
               <h1 className={styles.continued}>To be continued...</h1>
             </div>
             <div className={styles.rightPage}></div>
+            <img
+              className={styles.arrowright}
+              src="https://image.flaticon.com/icons/svg/709/709586.svg"
+              alt="arrowleft"
+              onClick={handleContact}
+            />
           </div>
         )}
       </Row>

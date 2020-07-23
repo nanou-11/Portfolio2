@@ -11,6 +11,7 @@
   margin-top: 3vh;
   margin-left: 35vw;
   border-radius: 0 20px 20px 0;
+  box-shadow: 10px 10px 5px 5px rgba(0, 0, 0, 0.3);
 }
 .leftPage {
   background: url("./images/paper.png"),
@@ -64,4 +65,9 @@
   margin-top : 15vh;
   margin-left :12vw;
   width : 15vw;
+}
+.arrowright {
+  width: 5vw;
+  margin-left: 5vw;
+  cursor: pointer;
 }

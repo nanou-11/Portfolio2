@@ -9,6 +9,7 @@ import {
   Col,
   Input,
   Label,
+  Spinner,
 } from "reactstrap";
 
 import styles from "./PutModal.module.css";
@@ -39,6 +40,9 @@ function PutModal({
   const [date, setDate] = useState(datee);
   const [tools, setTools] = useState(toolss);
   const [error, setError] = useState(false);
+  const [loading1, setLoading1] = useState(false);
+  const [loading2, setLoading2] = useState(false);
+  const [loading3, setLoading3] = useState(false);
 
   const handleOne = (e) => {
     setScreenshot1(e.target.files[0]);
@@ -51,36 +55,42 @@ function PutModal({
   };
   const postOne = (e) => {
     e.preventDefault();
+    setLoading1(true);
     Axios.post("https://api.imgur.com/3/image", screenshot1, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot1(res.data.data.link))
+      .then(() => setLoading1(false))
       .catch((err) => {
         setError(err);
       });
   };
   const postTwo = (e) => {
     e.preventDefault();
+    setLoading2(true);
     Axios.post("https://api.imgur.com/3/image", screenshot2, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot2(res.data.data.link))
+      .then(() => setLoading2(false))
       .catch((err) => {
         setError(err);
       });
   };
   const postThree = (e) => {
     e.preventDefault();
+    setLoading3(true);
     Axios.post("https://api.imgur.com/3/image", screenshot3, {
       headers: {
         Authorization: "Client-ID 38a2ddeb9886ee5",
       },
     })
       .then((res) => setScreenshot3(res.data.data.link))
+      .then(() => setLoading3(false))
       .catch((err) => {
         setError(err);
       });
@@ -120,12 +130,14 @@ function PutModal({
     }
   };
   return (
-    <div>
+    <div className={styles.body}>
       <Button className={styles.button} onClick={toggle}>
         Modifier
       </Button>
       <Modal isOpen={modal} toggle={toggle}>
-        <ModalHeader toggle={toggle}>{label}</ModalHeader>
+        <ModalHeader toggle={toggle}>
+          <h1 className={styles.header}>{label}</h1>
+        </ModalHeader>
         <ModalBody>
           <Form onSubmit={handleSubmit}>
             <Input
@@ -169,6 +181,7 @@ function PutModal({
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file"
                   id="exampleFile1"
@@ -181,6 +194,13 @@ function PutModal({
                   Télécharger
                 </Button>
               </Col>
+              <Col>
+                {loading1 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}{" "}
+              </Col>
             </Row>
             <Label className={styles.input} for="exampleFile2">
               <u>2nd screenshot</u>
@@ -188,6 +208,7 @@ function PutModal({
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file2"
                   id="exampleFile2"
@@ -200,6 +221,13 @@ function PutModal({
                   Télécharger
                 </Button>
               </Col>
+              <Col>
+                {loading2 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}{" "}
+              </Col>
             </Row>
 
             <Label className={styles.input} for="exampleFile3">
@@ -208,6 +236,7 @@ function PutModal({
             <Row>
               <Col xs="8">
                 <Input
+                  className={styles.files}
                   type="file"
                   name="file3"
                   id="exampleFile3"
@@ -220,6 +249,13 @@ function PutModal({
                   Télécharger
                 </Button>
               </Col>
+              <Col>
+                {loading3 ? (
+                  <Spinner className={styles.spinner} color="dark" />
+                ) : (
+                  ""
+                )}{" "}
+              </Col>
             </Row>
             <Row>
               <Col xs="2">
@@ -227,7 +263,7 @@ function PutModal({
                   Supprimer
                 </Button>
               </Col>
-              <Col xs={{ size: 2, offset: 6 }}>
+              <Col xs={{ size: 2, offset: 7 }}>
                 <Button className={styles.buttonSubmit} type="submit">
                   Modifier
                 </Button>

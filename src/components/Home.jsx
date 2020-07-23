@@ -6,9 +6,15 @@ import NavBar from "./NavBar";
 import styles from "./Home.module.css";
 
 import tache from "./images/encre.png";
+import { useHistory } from "react-router";
 
 function Home() {
   const [change, setChange] = useState(true);
+  const history = useHistory();
+
+  const handleAbout = () => {
+    history.push("/about");
+  };
 
   useEffect(() => {
     setTimeout(() => setChange("true"), 2000);
@@ -39,6 +45,12 @@ function Home() {
                 </h1>
               </Typing>
             </div>
+            <img
+              className={styles.arrowright}
+              src="https://image.flaticon.com/icons/svg/709/709586.svg"
+              alt="arrowleft"
+              onClick={handleAbout}
+            />
           </div>
         )}
       </Row>

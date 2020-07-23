@@ -16,7 +16,7 @@
   width: 30vw;
   height: 80vh;
   margin-top: 3vh;
-  margin-left: 20vw;
+  margin-left: 5vw;
   box-shadow: -1px 2px 10px 5px rgba(0, 0, 0, 0.3) inset;
 }
 .rightPage {
@@ -57,5 +57,17 @@
   font-size: 2rem !important;
   background-color: black !important;
   font-weight: bold !important;
-  width : 5vw;
+  width: 5vw;
+}
+.arrowleft {
+  width: 5vw;
+  margin-left: 10vw;
+  cursor: pointer;
+}
+.email {
+  margin-top: 20vh;
+}
+.logo {
+  width: 2vw;
+  margin-right: 1vw;
 }

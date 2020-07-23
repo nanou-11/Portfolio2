@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import styles from "./Contact.module.css";
 import { Form, Label, Input, Button, Row, Col } from "reactstrap";
 import Axios from "axios";
 import NavBar from "./NavBar";
+import { useHistory } from "react-router";
 
 const host = process.env.REACT_APP_HOST;
 
@@ -14,6 +15,8 @@ function Contact() {
   const [message, setMessage] = useState("");
   const [error, setError] = useState(false);
   const [send, setSend] = useState(false);
+  const [user, setUser] = useState();
+  const history = useHistory();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,12 +28,59 @@ function Contact() {
     }
   };
 
+  const handleProjects = () => {
+    history.push("/projects");
+  };
+
+  const getUser = async () => {
+    try {
+      const res = await Axios.get(`${host}/user`);
+      setUser(res.data[0]);
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  useEffect(() => {
+    getUser();
+  }, []);
+
   return (
     <>
       <NavBar />
       <div className={styles.pages}>
+        <img
+          onClick={handleProjects}
+          className={styles.arrowleft}
+          src="https://image.flaticon.com/icons/svg/860/860790.svg"
+          alt="arrowright"
+        />
         <div className={styles.leftPage}>
           <h1 className={styles.titleContact}>Contact</h1>
+          <h2 className={styles.email}>
+            <img
+              className={styles.logo}
+              src="https://image.flaticon.com/icons/svg/860/860758.svg"
+              alt="mail"
+            />{" "}
+            {user && user.email}
+          </h2>
+          <h2>
+            <img
+              className={styles.logo}
+              src="https://image.flaticon.com/icons/svg/25/25657.svg"
+              alt="Github"
+            />{" "}
+            {user && user.github}
+          </h2>
+          <h2>
+            <img
+              className={styles.logo}
+              src="https://image.flaticon.com/icons/svg/1384/1384046.svg"
+              alt="Linkedin"
+            />
+            {user && user.linkedin}
+          </h2>
         </div>
         <div className={styles.rightPage}>
           <p className={styles.contactText}>

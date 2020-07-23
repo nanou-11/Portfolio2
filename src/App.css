@@ -4,5 +4,11 @@
   background-repeat: none;
   background-size: 100%;
   height: 100vh;
-  font-family: "Parisienne", cursive;
+  font-family: "Parisienne", cursive !important;
+}
+.modal-content {
+  width: 30vw !important;
+}
+.modal-body {
+  padding: 0 !important;
 }
