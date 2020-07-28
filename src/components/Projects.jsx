@@ -73,7 +73,7 @@ function Projects() {
                 {projects[1] && projects[1].description} using{" "}
                 {projects[1] && projects[1].tools}
               </h2>
-              <a href={projects[1] && projects[1].url} target="_blank">
+              <a href={projects[1] && projects[1].url} rel="noopener noreferrer">
                 <img
                   className={styles.screenshot1}
                   src={projects[1] && projects[1].screenshot3}
@@ -113,7 +113,7 @@ function Projects() {
                 {projects[2] && projects[2].description} using{" "}
                 {projects[2] && projects[2].tools}
               </h2>
-              <a href={projects[2] && projects[2].url} target="_blank">
+              <a href={projects[2] && projects[2].url} rel="noopener noreferrer">
                 <img
                   className={styles.screenshot1}
                   src={projects[2] && projects[2].screenshot2}
@@ -138,7 +138,7 @@ function Projects() {
                 {projects[3] && projects[3].description} using{" "}
                 {projects[3] && projects[3].tools}
               </h2>
-              <a href={projects[3] && projects[3].url} target="_blank">
+              <a href={projects[3] && projects[3].url} rel="noopener noreferrer">
                 <img
                   className={styles.screenshot1}
                   src={projects[3] && projects[3].screenshot1}
@@ -178,7 +178,7 @@ function Projects() {
                 {projects[4] && projects[4].description} using{" "}
                 {projects[4] && projects[4].tools}
               </h2>
-              <a href={projects[4] && projects[4].url} target="_blank">
+              <a href={projects[4] && projects[4].url} rel="noopener noreferrer">
                 <img
                   className={styles.screenshot1}
                   src={projects[4] && projects[4].screenshot1}
@@ -203,7 +203,7 @@ function Projects() {
                 {projects[0] && projects[0].description} using{" "}
                 {projects[0] && projects[0].tools}
               </h2>
-              <a href={projects[0] && projects[0].url} target="_blank">
+              <a href={projects[0] && projects[0].url} rel="noopener noreferrer">
                 <img
                   className={styles.screenshot1}
                   src={projects[0] && projects[0].screenshot1}
