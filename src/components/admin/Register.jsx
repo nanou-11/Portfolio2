@@ -51,6 +51,7 @@ function Register() {
   };
   return (
     <>
+      {error ? "" : ""}
       {user[0] ? (
         <Login />
       ) : (
@@ -144,7 +145,6 @@ function Register() {
                   />
                 </Col>
               </Row>
-
               <Row>
                 <Col xs="3">
                   <Label id="Linkedin" className={styles.label}>
@@ -166,6 +166,7 @@ function Register() {
               <Button type="submit" className={styles.button}>
                 Valider
               </Button>
+              {errorPost ? <h3>Erreur lors de la création</h3> : ""}
             </Form>
           </div>
         </Row>
