@@ -14,7 +14,7 @@ function CV() {
 
   const getAbout = async () => {
     try {
-      const res = await Axios.get(`${host}about`);
+      const res = await Axios.get(`${host}/about`);
       setAbout(res.data[0]);
     } catch (err) {
       setError(err);

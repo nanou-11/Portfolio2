@@ -60,7 +60,7 @@ function AddWorks({ getProjects }) {
 
   const postProject = async () => {
     try {
-      await Axios.post(`${host}works`, {
+      await Axios.post(`${host}/works`, {
         label,
         url,
         description,

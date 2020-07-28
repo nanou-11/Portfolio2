@@ -21,7 +21,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      Axios.post(`${host}sendMail`, { name, email, subject, message });
+      Axios.post(`${host}/sendMail`, { name, email, subject, message });
       setSend(true);
     } catch (err) {
       setError(true);

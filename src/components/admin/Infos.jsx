@@ -19,7 +19,7 @@ function Infos() {
 
   const getUser = async () => {
     try {
-      const res = await Axios.get(`${host}user`);
+      const res = await Axios.get(`${host}/user`);
       setUser(res.data[0]);
     } catch (err) {
       setError(err);
@@ -37,7 +37,7 @@ function Infos() {
 
   const getAbout = async () => {
     try {
-      const res = await Axios.get(`${host}about`);
+      const res = await Axios.get(`${host}/about`);
       setAbouts(res.data);
       setAbout(res.data[0] && res.data[0].about);
       setCV(res.data[0] && res.data[0].cv);
@@ -54,7 +54,7 @@ function Infos() {
       },
     })
       .then((res) => {
-        return Axios.post(`${host}about/`, {
+        return Axios.post(`${host}/about/`, {
           cv: res.data.data.link,
           about,
           UserId: user.id,
@@ -69,7 +69,7 @@ function Infos() {
   const putAbout = async () => {
     const { id } = abouts[0];
     try {
-      await Axios.put(`${host}about/${id}`, {
+      await Axios.put(`${host}/about/${id}`, {
         about,
         UserId: user.id,
       });
@@ -91,7 +91,7 @@ function Infos() {
       .then((res) => {
         const { id } = abouts[0];
         console.log(id);
-        return Axios.put(`${host}about/${id}`, {
+        return Axios.put(`${host}/about/${id}`, {
           cv: res.data.data.link,
         });
       })
