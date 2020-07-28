@@ -14,7 +14,7 @@ function Works() {
 
   const getProjects = async () => {
     try {
-      const res = await Axios.get(`${host}/works`);
+      const res = await Axios.get(`${host}works`);
       console.log(res.data);
       setProjects(res.data);
     } catch (err) {

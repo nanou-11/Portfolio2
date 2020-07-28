@@ -22,7 +22,7 @@ function Register() {
 
   const getUser = async () => {
     try {
-      const res = await Axios.get(`${host}/user`);
+      const res = await Axios.get(`${host}user`);
       setUser(res.data);
     } catch (err) {
       setError(true);
@@ -36,7 +36,7 @@ function Register() {
   const postUser = async (e) => {
     e.preventDefault();
     try {
-      await Axios.post(`${host}/auth/register`, {
+      await Axios.post(`${host}auth/register`, {
         lastName,
         firstName,
         email,

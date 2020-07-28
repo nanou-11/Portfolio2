@@ -47,7 +47,7 @@ function AddWorks({ getProjects }) {
 
   const getUser = async () => {
     try {
-      const res = await Axios.get(`${host}/user`);
+      const res = await Axios.get(`${host}user`);
       setUser(res.data[0]);
     } catch (err) {
       setError(err);
@@ -60,7 +60,7 @@ function AddWorks({ getProjects }) {
 
   const postProject = async () => {
     try {
-      await Axios.post(`${host}/works`, {
+      await Axios.post(`${host}works`, {
         label,
         url,
         description,

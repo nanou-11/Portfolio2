@@ -47,7 +47,7 @@ function PutModal({
 
   const getUser = async () => {
     try {
-      const res = await Axios.get(`${host}/user`);
+      const res = await Axios.get(`${host}user`);
       setUser(res.data[0]);
     } catch (err) {
       setError(err);
@@ -112,7 +112,7 @@ function PutModal({
 
   const putWork = async () => {
     try {
-      await Axios.put(`${host}/works/${id}`, {
+      await Axios.put(`${host}works/${id}`, {
         label,
         url,
         description,
@@ -137,7 +137,7 @@ function PutModal({
 
   const deleteWork = async () => {
     try {
-      await Axios.delete(`${host}/works/${id}`);
+      await Axios.delete(`${host}works/${id}`);
       setModal(!modal);
       getProjects();
     } catch (err) {
