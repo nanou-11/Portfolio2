@@ -1,0 +1,38 @@
+.titleRegister {
+  font-size: 6rem;
+  padding: 5vh 2vw 3vw 2vw;
+  font-weight: bold;
+  color: rgb(185, 169, 169);
+}
+.couv {
+  background: url("../images/couv.jpg");
+  width: 30vw;
+  height: 80vh;
+  margin-top: 10vh;
+  margin-left: 35vw;
+  border-radius: 0 20px 20px 0;
+}
+.label {
+  color: rgb(185, 169, 169);
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: left !important;
+  width: 100%;
+}
+.input1 {
+  width: 20vw !important;
+  font-size: 1.5rem !important;
+  font-weight: bold !important;
+  margin-bottom: 1vw;
+}
+.form {
+  padding-left: 1vw;
+}
+.button {
+  font-size: 2rem !important;
+  background-color: rgb(185, 169, 169) !important;
+  font-weight: bold !important;
+  border: none !important;
+  color: black !important;
+  margin-left: 14vw;
+}
