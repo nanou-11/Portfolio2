@@ -34,7 +34,7 @@ function Contact() {
 
   const getUser = async () => {
     try {
-      const res = await Axios.get(`${host}user`);
+      const res = await Axios.get(`${host}/user`);
       setUser(res.data[0]);
     } catch (err) {
       setError(err);

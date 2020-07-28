@@ -70,15 +70,9 @@
 .screenshot1 {
   width: 25vw;
   height: 28vh;
-  margin-top: 8vh;
+  margin-top: 10vh;
 }
-.screenshot {
-  width: 25vw;
-  margin-top: 2vw;
-}
-.screenshot:hover {
-  border : 1px solid black
-}
+
 .button {
   font-size: 2rem !important;
   background-color: black !important;
