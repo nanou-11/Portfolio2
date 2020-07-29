@@ -53,6 +53,11 @@
   text-align: justify;
   text-indent: 2vw;
 }
+.contactMessage {
+  font-size: 1vw;
+  text-align: justify;
+  text-indent: 2vw;
+}
 .button {
   font-size: 1.5vw !important;
   background-color: black !important;

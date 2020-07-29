@@ -126,15 +126,14 @@ function Contact() {
               onChange={(e) => setMessage(e.target.value)}
             />
             {send ? (
-              <p className={styles.contactText}>
+              <p className={styles.contactMessage}>
                 Votre message a bien été envoyé
               </p>
             ) : (
               ""
             )}
             {error ? (
-              <p className={styles.contactText}>
-                {" "}
+              <p className={styles.contactMessage}>
                 Il y a eu une erreur lors de l'envoi de votre message
               </p>
             ) : (
