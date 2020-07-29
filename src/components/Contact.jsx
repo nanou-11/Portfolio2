@@ -23,6 +23,11 @@ function Contact() {
     try {
       Axios.post(`${host}/sendMail`, { name, email, subject, message });
       setSend(true);
+      setSubject("");
+      setEmail("")
+      setName('');
+      setMessage('')
+      setTimeout(()=> setSend(false), 1500)
     } catch (err) {
       setError(true);
     }
