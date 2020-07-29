@@ -70,7 +70,7 @@ function Contact() {
             />{" "}
             {user && user.email}
           </h2>
-          <h2>
+          <h2 className={styles.link}>
             <img
               className={styles.logo}
               src="https://image.flaticon.com/icons/svg/25/25657.svg"
@@ -78,7 +78,7 @@ function Contact() {
             />{" "}
             {user && user.github}
           </h2>
-          <h2>
+          <h2 className={styles.link}>
             <img
               className={styles.logo}
               src="https://image.flaticon.com/icons/svg/1384/1384046.svg"

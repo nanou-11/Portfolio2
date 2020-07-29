@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 
 import styles from "./Projects.module.css";
 import Axios from "axios";
-import { Row, Tooltip } from "reactstrap";
+import { Row } from "reactstrap";
 import NavBar from "./NavBar";
 import { useHistory } from "react-router";
+
+import CarousselWork from "./CarousselWork";
 
 const host = process.env.REACT_APP_HOST;
 
@@ -13,20 +15,6 @@ function Projects() {
   const [error, setError] = useState(false);
   const [change, setChange] = useState("un");
   const history = useHistory();
-  const [tooltipOpen, setTooltipOpen] = useState(false);
-  const toggle = () => setTooltipOpen(!tooltipOpen);
-
-  const [tooltipOpen2, setTooltipOpen2] = useState(false);
-  const toggle2 = () => setTooltipOpen2(!tooltipOpen2);
-
-  const [tooltipOpen3, setTooltipOpen3] = useState(false);
-  const toggle3 = () => setTooltipOpen3(!tooltipOpen3);
-
-  const [tooltipOpen4, setTooltipOpen4] = useState(false);
-  const toggle4 = () => setTooltipOpen4(!tooltipOpen4);
-
-  const [tooltipOpen5, setTooltipOpen5] = useState(false);
-  const toggle5 = () => setTooltipOpen5(!tooltipOpen5);
 
   const handleContact = () => {
     history.push("/contact");
@@ -73,22 +61,17 @@ function Projects() {
                 {projects[1] && projects[1].description} using{" "}
                 {projects[1] && projects[1].tools}
               </h2>
-              <a href={projects[1] && projects[1].url} rel="noopener noreferrer">
-                <img
-                  className={styles.screenshot1}
-                  src={projects[1] && projects[1].screenshot3}
-                  alt="screenshot1"
+              <a
+                href={projects[1] && projects[1].url}
+                rel="noopener noreferrer"
+              >
+                <CarousselWork
                   id="Tooltip2"
+                  image1={projects[1] && projects[1].screenshot1}
+                  image2={projects[1] && projects[1].screenshot2}
+                  image3={projects[1] && projects[1].screenshot3}
                 />
               </a>
-              <Tooltip
-                placement="bottom"
-                isOpen={tooltipOpen2}
-                target="Tooltip2"
-                toggle={toggle2}
-              >
-                View site
-              </Tooltip>
             </div>
             <img
               className={styles.arrowright}
@@ -113,21 +96,16 @@ function Projects() {
                 {projects[2] && projects[2].description} using{" "}
                 {projects[2] && projects[2].tools}
               </h2>
-              <a href={projects[2] && projects[2].url} rel="noopener noreferrer">
-                <img
-                  className={styles.screenshot1}
-                  src={projects[2] && projects[2].screenshot2}
-                  alt="screenshot1"
+              <a
+                href={projects[2] && projects[2].url}
+                rel="noopener noreferrer"
+              >
+                <CarousselWork
                   id="Tooltip5"
+                  image1={projects[2] && projects[2].screenshot1}
+                  image2={projects[2] && projects[2].screenshot2}
+                  image3={projects[2] && projects[2].screenshot3}
                 />
-                <Tooltip
-                  placement="bottom"
-                  isOpen={tooltipOpen5}
-                  target="Tooltip5"
-                  toggle={toggle5}
-                >
-                  View site
-                </Tooltip>
               </a>
             </div>
             <div className={styles.rightPage}>
@@ -138,21 +116,16 @@ function Projects() {
                 {projects[3] && projects[3].description} using{" "}
                 {projects[3] && projects[3].tools}
               </h2>
-              <a href={projects[3] && projects[3].url} rel="noopener noreferrer">
-                <img
-                  className={styles.screenshot1}
-                  src={projects[3] && projects[3].screenshot1}
-                  alt="screenshot1"
+              <a
+                href={projects[3] && projects[3].url}
+                rel="noopener noreferrer"
+              >
+                <CarousselWork
                   id="Tooltip3"
+                  image1={projects[3] && projects[3].screenshot1}
+                  image2={projects[3] && projects[3].screenshot2}
+                  image3={projects[3] && projects[3].screenshot3}
                 />
-                <Tooltip
-                  placement="bottom"
-                  isOpen={tooltipOpen3}
-                  target="Tooltip3"
-                  toggle={toggle3}
-                >
-                  View site
-                </Tooltip>
               </a>
             </div>
             <img
@@ -178,21 +151,16 @@ function Projects() {
                 {projects[4] && projects[4].description} using{" "}
                 {projects[4] && projects[4].tools}
               </h2>
-              <a href={projects[4] && projects[4].url} rel="noopener noreferrer">
-                <img
-                  className={styles.screenshot1}
-                  src={projects[4] && projects[4].screenshot1}
-                  alt="screenshot1"
+              <a
+                href={projects[4] && projects[4].url}
+                rel="noopener noreferrer"
+              >
+                <CarousselWork
                   id="Tooltip4"
+                  image1={projects[4] && projects[4].screenshot1}
+                  image2={projects[4] && projects[4].screenshot2}
+                  image3={projects[4] && projects[4].screenshot3}
                 />
-                <Tooltip
-                  placement="bottom"
-                  isOpen={tooltipOpen4}
-                  target="Tooltip4"
-                  toggle={toggle4}
-                >
-                  View site
-                </Tooltip>
               </a>
             </div>
             <div className={styles.rightPage}>
@@ -203,21 +171,16 @@ function Projects() {
                 {projects[0] && projects[0].description} using{" "}
                 {projects[0] && projects[0].tools}
               </h2>
-              <a href={projects[0] && projects[0].url} rel="noopener noreferrer">
-                <img
-                  className={styles.screenshot1}
-                  src={projects[0] && projects[0].screenshot1}
-                  alt="screenshot1"
+              <a
+                href={projects[0] && projects[0].url}
+                rel="noopener noreferrer"
+              >
+                <CarousselWork
                   id="Tooltip1"
+                  image1={projects[0] && projects[0].screenshot1}
+                  image2={projects[0] && projects[0].screenshot2}
+                  image3={projects[0] && projects[0].screenshot3}
                 />
-                <Tooltip
-                  placement="bottom"
-                  isOpen={tooltipOpen}
-                  target="Tooltip1"
-                  toggle={toggle}
-                >
-                  View site
-                </Tooltip>
               </a>
             </div>
             <img
